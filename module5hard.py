@@ -1,6 +1,5 @@
 import time
 
-
 class User:
     def __init__(self, nickname: str, password: int, age: int):
         self.nickname = nickname
@@ -20,9 +19,6 @@ class Video:
 
 
 class UrTube:
-    users = []
-    videos = []
-
     def __init__(self, current_user: str = False):
         self.users = []
         self.videos = []
@@ -30,7 +26,8 @@ class UrTube:
 
     def log_in(self, nickname: str, password: str):
         if nickname in self.users and hash(password) in self.users:
-            self.current_user = nickname
+            user = User(nickname, password)
+            self.current_user = user
 
     def register(self, nickname: str, password: str, age: int):
         for i in self.users:
